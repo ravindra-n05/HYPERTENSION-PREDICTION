@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hypertension Detection</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>Hypertension Detection</h1>
+<p>Advanced AI-Powered Cardiovascular Risk Assessment Platform</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Comprehensive Health Assessment</h2>
+
+{% if prediction_text %}
+
+<div class="result {{result_color}}">
+<h3>{{ prediction_text }}</h3>
+
+<p><b>Confidence:</b> {{ confidence }}%</p>
+
+<p>{{ recommendation.description }}</p>
+
+<h4>Clinical Recommendations</h4>
+
+<ul>
+{% for action in recommendation.actions %}
+<li>{{ action }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+{% endif %}
+
+<form method="POST" action="/predict">
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Gender</label>
+<select name="Gender">
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Age Group</label>
+<select name="Age">
+<option>18-34</option>
+<option>35-50</option>
+<option>51-64</option>
+<option>65+</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Family History</label>
+<select name="History">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Currently Under Medical Care</label>
+<select name="Patient">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Taking BP Medication</label>
+<select name="TakeMedication">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Symptom Severity</label>
+<select name="Severity">
+<option>Mild</option>
+<option>Moderate</option>
+<option>Severe</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Shortness of Breath</label>
+<select name="BreathShortness">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Vision Changes</label>
+<select name="VisualChanges">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Frequent Nosebleeds</label>
+<select name="NoseBleeding">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Time Since Diagnosis</label>
+<select name="Whendiagnosed">
+<option>&lt;1 Year</option>
+<option>1-5 Years</option>
+<option>&gt;5 Years</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Systolic Pressure</label>
+<select name="Systolic">
+<option>100 - 110</option>
+<option>111 - 120</option>
+<option>121 - 130</option>
+<option>130+</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Diastolic Pressure</label>
+<select name="Diastolic">
+<option>70 - 80</option>
+<option>81 - 90</option>
+<option>91 - 100</option>
+<option>100+</option>
+</select>
+</div>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Heart Healthy Diet</label>
+<select name="ControlledDiet">
+<option>No</option>
+<option>Yes</option>
+</select>
+</div>
+
+</div>
+
+
+<button type="submit">Generate Risk Assessment</button>
+
+</form>
+
+</div>
+
+
+<div class="sidebar">
+
+<div class="box">
+
+<h3>About This System</h3>
+
+<p>
+Our AI powered system analyzes cardiovascular risk factors using machine learning models trained on clinical datasets.
+</p>
+
+<ul>
+<li>Evidence based risk assessment</li>
+<li>Clinical guideline compliance</li>
+<li>Personalized recommendations</li>
+<li>Professional medical support</li>
+</ul>
+
+</div>
+
+
+<div class="box">
+
+<h3>Blood Pressure Guidelines</h3>
+
+<ul>
+<li>Normal: &lt;120/80</li>
+<li>Elevated: 120-129/&lt;80</li>
+<li>Stage 1: 130-139/80-89</li>
+<li>Stage 2: ≥140/90</li>
+<li>Crisis: &gt;180/120</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+SmartBridge Hyderabad
+</div>
+
+</body>
+</html>
