@@ -27,7 +27,7 @@
 
 {% if prediction_text %}
 
-<div class="result {{result_color}}">
+<div class="result" style="border-left: 6px solid {{ result_color }}; background-color: rgba(255, 255, 255, 0.9);">
 <h3>{{ prediction_text }}</h3>
 
 <p><b>Confidence:</b> {{ confidence }}%</p>
